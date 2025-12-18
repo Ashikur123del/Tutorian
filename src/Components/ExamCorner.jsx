@@ -18,7 +18,7 @@ const ExamCorner = () => {
 
   return (
     <div
-      className='py-20 px-4 relative overflow-hidden'
+      className='py-10 md:py-20 px-4 relative overflow-hidden'
       style={{
         backgroundImage: `url(${ExamImg})`,
         backgroundSize: 'cover',
@@ -31,7 +31,7 @@ const ExamCorner = () => {
         </h2>
 
         {/* Tags Section */}
-        <div className='flex flex-wrap justify-center gap-3 mb-16'>
+        <div className='flex flex-wrap justify-center gap-3 mb-8  md:mb-16'>
           {tags.map((tag, index) => (
             <span
               key={index}
@@ -43,7 +43,7 @@ const ExamCorner = () => {
         </div>
 
         {/* Categories Grid */}
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8'>
           {categories.map(cat => (
             <div
               key={cat.id}

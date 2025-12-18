@@ -75,10 +75,10 @@ const ClientSense = () => {
   });
 
   return (
-    <section className="py-24 bg-gray-50 overflow-hidden">
+    <section className="py-10 md:py-24 bg-gray-50 overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center mb-16">
-          <h2 className="text-[32px] md:text-[45px] font-black text-[#111827] mb-4">
+        <div className="text-center mb-6 md:mb-16">
+          <h2 className="text-2xl md:text-4xl font-black text-[#111827] mb-4">
             গ্রাহকদের <span className="text-indigo-600">অভিজ্ঞতা</span>
           </h2>
           <div className="w-24 h-1.5 bg-indigo-600 mx-auto rounded-full"></div>

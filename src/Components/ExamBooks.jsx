@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { IoEyeOutline } from "react-icons/io5";
 import { LiaRandomSolid } from "react-icons/lia";
 import { AiOutlineHeart } from "react-icons/ai";
@@ -15,41 +16,71 @@ const books = [
   { id: 4, bg: "bg-[#F4F1FF]" },
 ];
 
+/* ======= VARIANTS ======= */
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  hover: { scale: 1.03, y: -5, transition: { duration: 0.3 } },
+};
+
 const ExamBooks = () => {
   return (
-    <section className="container mx-auto px-4 py-16">
-      <h2 className="text-3xl font-extrabold text-center mb-12">
+    <motion.section
+      className="container mx-auto px-4 py-8 md:py-16"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+    >
+      <h2 className=" text-2xl md:text-4xl font-extrabold text-center mb-6 md:mb-10">
         আমাদের সবচেয়ে জনপ্রিয় বই
       </h2>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-    
-        <div className="relative rounded-3xl overflow-hidden">
+        {/* LEFT BANNER */}
+        <motion.div
+          className="relative rounded-3xl overflow-hidden"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <img src={banner} alt="banner" className="w-full h-full object-cover" />
-
           <div className="absolute top-10 p-8 flex flex-col justify-center">
-            <p className="text-base font-semibold mb-2">
-              জনপ্রিয় জানা অজানা বইগুলো
-            </p>
-
+            <p className="text-base font-semibold mb-2">জনপ্রিয় জানা অজানা বইগুলো</p>
             <h3 className="text-2xl md:text-4xl font-extrabold leading-snug mb-6">
               যে বইগুলো আপনার <br /> ক্যারিয়ারের জন্য
             </h3>
-
-            {/* Gradient Button */}
             <button className="bg-gradient-to-r from-[#FF7844] to-[#FC1C69]
               text-white px-6 py-3 rounded-xl w-fit flex items-center gap-2
               font-semibold hover:opacity-90 transition">
               📚 সব বইগুলো দেখুন
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* RIGHT BOOK GRID */}
-        <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <motion.div
+          className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           {books.map((item) => (
-            <div
+            <motion.div
               key={item.id}
+              variants={cardVariants}
+              whileHover="hover"
               className={`${item.bg} rounded-2xl p-5 flex gap-4 items-center`}
             >
               {/* Book Image */}
@@ -60,7 +91,6 @@ const ExamBooks = () => {
               {/* Content */}
               <div className="flex-1">
                 <p className="text-sm text-[#635658] mb-1">পদার্থবিজ্ঞান</p>
-
                 <h4 className="font-bold text-[#635658] text-base mb-2 leading-snug">
                   পদার্থবিজ্ঞানের জানা অজানা বিষয় গুলো
                 </h4>
@@ -92,17 +122,19 @@ const ExamBooks = () => {
                   <Icon active><HiOutlineShoppingBag /></Icon>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
 /* ICON BUTTON */
 const Icon = ({ children, active }) => (
-  <button
+  <motion.button
+    whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.95 }}
     className={`w-9 h-9 rounded-lg border flex items-center justify-center transition
     ${
       active
@@ -111,7 +143,7 @@ const Icon = ({ children, active }) => (
     }`}
   >
     {children}
-  </button>
+  </motion.button>
 );
 
 export default ExamBooks;

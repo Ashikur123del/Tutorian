@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Course1 from '../assets/images/Course1.png'
 import Course2 from '../assets/images/Coures2.png'
 import Course3 from '../assets/images/Coures3.png'
@@ -41,7 +42,14 @@ const courses = [
 
 const LiveCourse = ({ course }) => {
   return (
-    <div className='bg-white rounded-2xl shadow-sm border border-gray-100 flex flex-col p-4 transition-all hover:shadow-md'>
+    <motion.div
+      layout
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 20 }}
+      transition={{ duration: 0.4 }}
+      className='bg-white rounded-2xl shadow-sm border border-gray-100 flex flex-col p-4 hover:shadow-lg transition-shadow duration-300'
+    >
       <div className='relative rounded-xl overflow-hidden h-48 mb-5'>
         <img
           src={course.image}
@@ -52,7 +60,7 @@ const LiveCourse = ({ course }) => {
           {course.batches.map((batch, index) => (
             <span
               key={index}
-              className='bg-white/95 text-xs px-2.5 py-2 rounded-md border border-gray-300 text-gray-700 font-semibold shadow-sm'
+              className='bg-white/95 text-[10px] md:text-xs px-2.5 py-2 rounded-md border border-gray-300 text-gray-700 font-semibold shadow-sm'
             >
               {batch}
             </span>
@@ -67,27 +75,17 @@ const LiveCourse = ({ course }) => {
           {course.description}
         </p>
       </div>
-      <div className='mt-auto'>
-        <button className='w-full bg-[#f42a6b] hover:bg-[#d61f5c] text-white font-bold py-3.5 rounded-xl transition-colors text-[15px]'>
-          Course Details
-        </button>
-      </div>
-    </div>
+      <button className='w-full bg-[#f42a6b] hover:bg-[#d61f5c] text-white font-bold py-3.5 rounded-xl transition-colors text-[15px]'>
+        Course Details
+      </button>
+    </motion.div>
   )
 }
 
-export default function CourseSelection () {
+export default function CourseSelection() {
   const [activeCategory, setActiveCategory] = useState('সকল')
 
-  // ৬টি ক্যাটেগরি
-  const categories = [
-    'সকল',
-    'ডিজাইন',
-    'ফ্রিল্যান্সিং',
-    'প্রোগ্রামিং',
-    'মার্কেটিং',
-    'ব্যবসা'
-  ]
+  const categories = ['সকল', 'ডিজাইন', 'ফ্রিল্যান্সিং', 'প্রোগ্রামিং', 'মার্কেটিং', 'ব্যবসা']
 
   const filteredCourses =
     activeCategory === 'সকল'
@@ -95,53 +93,53 @@ export default function CourseSelection () {
       : courses.filter(course => course.category === activeCategory)
 
   return (
-    <div className='bg-[#fcfcfc] min-h-[80vh] py-16 px-6 font-sans'>
+    <div className='bg-[#fcfcfc] min-h-[80vh] py-8 md:py-16 px-6 font-sans'>
       <div className='container mx-auto'>
-        <div className='flex flex-col md:flex-row md:items-center justify-between gap-8 mb-14'>
-          <h1 className='text-3xl md:text-4xl font-black text-[#1a1a1a] tracking-tight'>
+        {/* Header & Categories */}
+        <div className='flex flex-col md:flex-row md:items-center justify-between gap-8 mb-6 md:mb-12'>
+          <h1 className='text-2xl md:text-4xl font-black text-[#1a1a1a] tracking-tight'>
             আমাদের লাইভ কোর্স সমূহ
           </h1>
-
           <div className='flex flex-wrap gap-3'>
             {categories.map((cat, index) => {
               const count =
                 cat === 'সকল'
                   ? courses.length
                   : courses.filter(c => c.category === cat).length
-
               return (
                 <button
                   key={index}
                   onClick={() => setActiveCategory(cat)}
-                  className={`flex flex-col items-center justify-center min-w-[95px] py-2.5 px-4 rounded-xl border transition-all ${
+                  className={`flex flex-col items-center justify-center min-w-[95px] py-2.5 px-4 rounded-xl border transition-all duration-300 ${
                     activeCategory === cat
                       ? 'bg-white border-gray-400 shadow-md ring-1 ring-gray-400'
                       : 'bg-[#f8fafc] border-gray-200 hover:border-gray-300 text-gray-600'
                   }`}
                 >
-                  <span className='text-[14px] font-bold text-gray-800'>
-                    {cat}
-                  </span>
-                  <span className='text-[11px] text-gray-400 mt-0.5'>
-                    {count} কোর্স
-                  </span>
+                  <span className='text-[14px] font-bold text-gray-800'>{cat}</span>
+                  <span className='text-[11px] text-gray-400 mt-0.5'>{count} কোর্স</span>
                 </button>
               )
             })}
           </div>
         </div>
 
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8'>
-          {filteredCourses.length > 0 ? (
-            filteredCourses.map(course => (
-              <LiveCourse key={course.id} course={course} />
-            ))
-          ) : (
-            <p className='col-span-full text-center py-20 text-gray-400 '>
-              কোনো কোর্স পাওয়া যায়নি।
-            </p>
-          )}
-        </div>
+        {/* Courses Grid */}
+        <motion.div layout className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8'>
+          <AnimatePresence>
+            {filteredCourses.length > 0 ? (
+              filteredCourses.map(course => <LiveCourse key={course.id} course={course} />)
+            ) : (
+              <motion.p
+                className='col-span-full text-center py-20 text-gray-400'
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+              >
+                কোনো কোর্স পাওয়া যায়নি।
+              </motion.p>
+            )}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </div>
   )

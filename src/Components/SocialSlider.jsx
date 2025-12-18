@@ -32,7 +32,7 @@ const SocialSlider = () => {
 
       <div className="container mx-auto  px-4 ">
         
-        <h2 className="text-center text-xl md:text-3xl font-bold mb-10 text-gray-800">
+        <h2 className="text-center text-[18px] md:text-3xl font-bold mb-10 text-gray-800">
           সকল আপডেট পেতে আমাদের সাথে যুক্ত হউন
         </h2>
 

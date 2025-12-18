@@ -39,10 +39,10 @@ const advantages = [
 
 const TutorionAdvantage = () => {
   return (
-    <section className='py-16 bg-white'>
+    <section className='py-8 md:py-16 bg-white'>
       <div className='container mx-auto px-4'>
         <div className='text-center mb-12'>
-          <h2 className='text-3xl md:text-4xl font-bold text-gray-900'>
+          <h2 className='text-2xl md:text-4xl font-bold text-gray-900'>
             টিউটরিয়ানের সাথে এগিয়ে থাকুন!
           </h2>
           <p className='mt-4 text-gray-600 text-base font-semibold max-w-2xl mx-auto'>

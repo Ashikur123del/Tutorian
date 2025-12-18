@@ -27,7 +27,6 @@ const Navbar = () => {
     }
   }
 
-  // বাইরে ক্লিক করলে মেনু বন্ধ হবে
   useEffect(() => {
     const handleClickOutside = e => {
       if (navRef.current && !navRef.current.contains(e.target)) {
@@ -51,12 +50,10 @@ const Navbar = () => {
       <div className='container mx-auto px-4 lg:px-8' ref={navRef}>
         <div className='flex items-center justify-between h-20 gap-4'>
           
-          {/* Logo */}
           <div className='flex-shrink-0'>
             <img src={Logo} alt='Logo' className='h-10 md:h-12 cursor-pointer' />
           </div>
 
-          {/* Search Bar */}
           <div className='hidden md:flex relative flex-grow max-w-sm'>
             <input
               type='text'
@@ -65,8 +62,6 @@ const Navbar = () => {
             />
             <FaSearch className='absolute right-4 top-1/2 -translate-y-1/2 text-gray-400' />
           </div>
-
-          {/* Desktop Navigation */}
           <nav className='hidden lg:flex items-center gap-2 xl:gap-4 font-medium text-[#333] h-full'>
             {Object.keys(menuItems).map(key => (
               <div

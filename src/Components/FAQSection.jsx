@@ -52,9 +52,9 @@ const FAQSection = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-16">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+    <div className="container mx-auto px-4 py-10 md:py-16">
+      <div className="text-center mb-8 md:mb-12">
+        <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-0 md:mb-4">
           কোর্সটি সম্পর্কে জিজ্ঞাসা
         </h2>
       </div>
