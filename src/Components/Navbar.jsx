@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { FaSearch, FaChevronDown, FaBars, FaTimes } from 'react-icons/fa'
 import { motion, AnimatePresence } from 'framer-motion'
 import Logo from '../assets/images/Logo.svg'
-import BgHeroImg from '../assets/images/BgHero.png'
+import BgHeroImg from '../assets/images/Bghero.png'
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
