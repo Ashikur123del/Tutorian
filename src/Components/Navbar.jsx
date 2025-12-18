@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { FaSearch, FaChevronDown, FaBars, FaTimes } from 'react-icons/fa'
 import { motion, AnimatePresence } from 'framer-motion'
 import Logo from '../assets/images/Logo.svg'
-import BgHeroImg from '../assets/images/Bghero.png'
+import Bghero from '../assets/images/Bghero.png'
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -43,7 +43,7 @@ const Navbar = () => {
     <header
       className='w-full bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm'
       style={{
-        backgroundImage: `url(${BgHeroImg})`,
+        backgroundImage: `url(${Bghero})`,
         backgroundPosition: 'center right',
         backgroundRepeat: 'no-repeat'
       }}
