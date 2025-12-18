@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import Man1 from '../../assets/images/man1.png'
 import Man2 from '../../assets/images/man2.png'
 import Man3 from '../../assets/images/man3.png'
-import BgHeroImg from '../../assets/images/BgHero.png'
+import Bghero from '../../assets/images/Bghero.png'
 import Bg1 from '../../assets/images/Bg-1.png'
 import Bg2 from '../../assets/images/Bg-2.png'
 import Bg3 from '../../assets/images/Bg-3.png'
@@ -43,7 +43,7 @@ const Hero = () => (
   <section
     className='relative min-h-[90vh] flex items-center py-16 bg-cover bg-no-repeat z-0'
     style={{
-      backgroundImage: `url(${BgHeroImg})`,
+      backgroundImage: `url(${Bghero})`,
       backgroundPosition: 'center right'
     }}
   >
