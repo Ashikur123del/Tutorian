@@ -47,7 +47,7 @@ const Hero = () => (
       backgroundPosition: 'center right'
     }}
   >
-    <div className='container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
+    <div className='container mx-auto px-5 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
       <motion.div
         variants={staggerContainer}
         initial='hidden'

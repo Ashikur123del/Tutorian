@@ -7,6 +7,12 @@ import ExamBooks from '../../Components/ExamBooks'
 import InstructionalVideo from '../../Components/InstructionalVideo'
 import LiveCourse from '../../Components/LiveCourse'
 import ExamCorner from '../../Components/ExamCorner'
+import TutorionAdvantage from '../../Components/TutorionAdvantage'
+import CareerDevelopment from '../../Components/CareerDevelopment'
+import TutorianOverview from '../../Components/TutorianOverview'
+import SocialSlider from '../../Components/SocialSlider'
+import ClientSense from '../../Components/ClientSense'
+import FAQSection from '../../Components/FAQSection'
 
 const Home = () => {
   return (
@@ -19,6 +25,12 @@ const Home = () => {
       <InstructionalVideo />
       <LiveCourse/>
       <ExamCorner />
+      <TutorionAdvantage />
+      <CareerDevelopment />
+      <TutorianOverview />
+      <SocialSlider />
+      <ClientSense />
+      <FAQSection />
     </div>
   )
 }
