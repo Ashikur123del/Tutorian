@@ -41,7 +41,7 @@ const InstructionalVideo = () => {
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="bg-[#FC1C69] text-white px-8 py-3 rounded-full font-medium shadow-lg hover:shadow-pink-200 transition-all flex items-center gap-2"
+          className="bg-gradient-to-r from-[#FF7844] to-[#FC1C69] text-white px-8 py-3 rounded-full font-medium shadow-lg hover:shadow-pink-200 transition-all flex items-center gap-2"
           onClick={() => setActiveVideo(videoList[0])} // Default first video
         >
           সকল ভিডিও দেখুন

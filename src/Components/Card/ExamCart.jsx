@@ -1,133 +1,106 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from 'react'
+import { motion } from 'framer-motion'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay } from 'swiper/modules'
+import 'swiper/css'
 
-// Background Images
-import CardBg from '../../assets/images/Card-bg.png';
-import CardOverlay from '../../assets/images/Card-6.svg';
+import CardBg from '../../assets/images/Card-bg.png'
+import CardOverlay from '../../assets/images/Card-6.svg'
 
-// Icons
-import m1 from '../../assets/images/m1.svg';
-import m2 from '../../assets/images/m2.svg';
-import m3 from '../../assets/images/m3.svg';
-import m4 from '../../assets/images/m4.svg';
+import m1 from '../../assets/images/m1.svg'
+import m2 from '../../assets/images/m2.svg'
+import m3 from '../../assets/images/m3.svg'
+import m4 from '../../assets/images/m4.svg'
 
-/* ================= DATA ================= */
 const programData = [
   { icon: m1, title: 'চাকরির প্রস্তুতি' },
   { icon: m2, title: 'ভর্তি প্রস্তুতি' },
   { icon: m3, title: 'একাডেমিক প্রোগ্রাম' },
-  { icon: m4, title: 'এক্সাম' },
-];
-
-/* ================= ANIMATION ================= */
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.1,
-    },
-  },
-};
+  { icon: m4, title: 'এক্সাম' }
+]
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 30, scale: 0.96 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.45, ease: 'easeOut' },
-  },
-};
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } }
+}
 
-const iconVariants = {
-  hidden: { scale: 0, opacity: 0 },
-  visible: {
-    scale: 1,
-    opacity: 1,
-    transition: { type: 'spring', stiffness: 140, damping: 12 },
-  },
-};
-
-/* ================= CARD ================= */
 const ProgramCard = ({ icon, title }) => {
   return (
     <motion.div
       variants={cardVariants}
-      whileHover={{ y: -6, scale: 1.03 }}
-      whileTap={{ scale: 0.97 }}
-      className="relative cursor-pointer select-none 
-                 max-w-[520px] w-full mx-auto"
+      whileHover={{ y: -6, scale: 1.02 }}
+      className='relative flex flex-col items-center pt-10 sm:pt-12 w-full max-w-[320px] md:max-w-[400px] mx-auto group'
     >
-      {/* Icon */}
-      <motion.div
-        variants={iconVariants}
-        className="absolute top-0 md:-top-12 left-1/2 -translate-x-1/2 z-10"
-      >
-        <div className="w-24 h-24 bg-white rounded-full shadow-xl
-                        flex items-center justify-center border-4 border-white">
+      <div className='absolute top-0 z-20'>
+        <div
+          className='w-16 h-16 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-white rounded-full flex items-center justify-center 
+                        shadow-[0_12px_24px_rgba(0,0,0,0.1)] border-4 border-white transition-transform group-hover:scale-105'
+        >
           <img
             src={icon}
             alt={title}
-            className="w-16 h-16 object-contain"
+            className='w-8 h-8 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain'
           />
         </div>
-      </motion.div>
+      </div>
 
-      {/* Card Body */}
+      {/* কার্ড বডি */}
       <div
-        className="relative h-52 sm:h-56 w-full bg-no-repeat bg-bottom bg-contain
-                   flex flex-col justify-end pt-16 pb-6 rounded-3xl"
-        style={{ backgroundImage: `url(${CardOverlay})` }}
+        className='relative w-full h-[140px] sm:h-[220px] md:h-[300px] bg-transparent flex flex-col justify-end pb-4 sm:pb-8'
+        style={{
+          backgroundImage: `url(${CardOverlay})`,
+          backgroundPosition: 'bottom center',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: '100% 100%'
+        }}
       >
-        <p className="text-center font-semibold text-[#1e1e1e]
-                      text-base sm:text-lg md:text-xl px-4">
+        <h3
+          className='relative z-10 text-center font-bold text-[#1a1a1a] 
+                       text-sm sm:text-xl md:text-3xl px-2'
+        >
           {title}
-        </p>
+        </h3>
       </div>
     </motion.div>
-  );
-};
+  )
+}
 
-/* ================= MAIN ================= */
 const ExamCart = () => {
   return (
-    <motion.section
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7 }}
-      className="bg-no-repeat bg-center bg-cover py-5 sm:py-16"
+    <section
+      className='py-5 md:py-20 bg-no-repeat bg-cover bg-center min-h-[150px] md:min-h-[600px]'
       style={{ backgroundImage: `url(${CardBg})` }}
     >
-      <div className="container mx-auto px-4">
-        {/* Heading */}
-        <motion.h2
-          initial={{ opacity: 0, y: -15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-2xl sm:text-3xl md:text-4xl font-bold
-                     text-center mb-6 md:mb-12 text-[#1a1a1a]"
-        >
+      <div className='container mx-auto px-4'>
+        <h2 className='text-xl md:text-4xl font-black text-center mb-5 md:mb-10 text-[#1a1a1a]'>
           আমাদের প্রোগ্রাম সমূহ
-        </motion.h2>
+        </h2>
 
-        {/* Cards */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4
-                     gap-4 sm:gap-3 md:gap-4 items-end"
+        {/* Swiper */}
+        <Swiper
+          modules={[Autoplay]}
+          spaceBetween={10}
+          slidesPerView={2}
+          breakpoints={{
+            768: {
+              slidesPerView: 4,
+              spaceBetween: 20,
+              autoplay: { delay: 3000 }
+            }
+          }}
+          autoplay={false}
+          loop={true}
+          grabCursor={true}
         >
           {programData.map((item, index) => (
-            <ProgramCard key={index} {...item} />
+            <SwiperSlide key={index}>
+              <ProgramCard {...item} />
+            </SwiperSlide>
           ))}
-        </motion.div>
+        </Swiper>
       </div>
-    </motion.section>
-  );
-};
+    </section>
+  )
+}
 
-export default ExamCart;
+export default ExamCart

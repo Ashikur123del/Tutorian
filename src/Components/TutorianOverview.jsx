@@ -23,7 +23,7 @@ const TutorianOverview = () => {
 
   const Card = ({ title, icon }) => (
     <div
-      className='group flex flex-col items-center justify-center p-6 border border-blue-100 rounded-xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 w-full min-h-[140px] md:min-h-[160px] cursor-pointer'
+      className='group flex flex-col items-center justify-center p-4 md:p-6 border border-blue-100 rounded-xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 w-full min-h-[140px] md:min-h-[160px] cursor-pointer'
       style={{
         backgroundImage: `url(${V7Bg})`,
         backgroundRepeat: 'no-repeat',
@@ -31,7 +31,7 @@ const TutorianOverview = () => {
         backgroundPosition: 'center'
       }}
     >
-      <div className='w-20 h-20 md:w-24 md:h-24 mb-4 flex items-center justify-center bg-white rounded-full shadow group-hover:scale-110 transition-transform duration-300'>
+      <div className='w-16 h-16 md:w-20 md:h-20 mb-3 md:mb-4 flex items-center justify-center bg-white rounded-full shadow group-hover:scale-110 transition-transform duration-300'>
         <img
           src={icon}
           alt={title}
@@ -45,42 +45,51 @@ const TutorianOverview = () => {
   )
 
   return (
-    <section className='py-4 md:py-20 px-4'>
-      <div className='max-w-7xl mx-auto'>
+    <section className='py-4 md:py-20 px-4 bg-white'>
+      <div className='w-full container mx-auto'>
         <h2 className='text-2xl md:text-4xl font-black text-center mb-8 md:mb-16 text-slate-900'>
           এক নজরে আমাদের টিউটোরিয়ান
         </h2>
 
-        <div className='grid grid-cols-1 md:grid-cols-12 items-center gap-4 lg:gap-12'>
-          {/* Left Cards */}
-          <div className='md:col-span-3 flex flex-col gap-6'>
+        {/* Desktop layout */}
+        <div className='hidden lg:flex items-start justify-between w-full gap-8 px-4'>
+          {/* Left cards */}
+          <div className='flex flex-col gap-6 w-1/4'>
             {leftItems.map(item => (
               <Card key={item.id} {...item} />
             ))}
           </div>
 
-          {/* Central Image */}
-          <div
-            className='md:col-span-6 flex justify-center items-center relative rounded-2xl'
-            style={{
-              backgroundImage: `url(${V7Bg})`,
-              backgroundRepeat: 'no-repeat',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center'
-            }}
-          >
+          {/* Central image */}
+          <div className='flex justify-center items-center w-1/2'>
             <img
               src={V1Img7}
               alt='Central Visualization'
-              className='relative z-10 w-full max-w-[400px] md:max-w-[500px] h-auto drop-shadow-2xl transform hover:scale-105 transition-transform duration-700 ease-in-out'
+              className='w-full max-w-[500px] h-auto drop-shadow-2xl transform hover:scale-105 transition-transform duration-700 ease-in-out'
             />
           </div>
 
-          {/* Right Cards */}
-          <div className='md:col-span-3 flex flex-col gap-6'>
+          {/* Right cards */}
+          <div className='flex flex-col gap-6 w-1/4'>
             {rightItems.map(item => (
               <Card key={item.id} {...item} />
             ))}
+          </div>
+        </div>
+
+        {/* Mobile & Tablet layout */}
+        <div className='grid grid-cols-2 gap-4 lg:hidden w-full'>
+          {leftItems.concat(rightItems).map(item => (
+            <Card key={item.id} {...item} />
+          ))}
+
+          {/* Central image full width */}
+          <div className='col-span-2 flex justify-center mt-4'>
+            <img
+              src={V1Img7}
+              alt='Central Visualization'
+              className='w-full max-w-[350px] h-auto drop-shadow-2xl'
+            />
           </div>
         </div>
       </div>

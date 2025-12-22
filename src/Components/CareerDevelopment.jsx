@@ -39,9 +39,10 @@ const items = [
 const CareerDevelopment = () => {
   return (
     <section className="container mx-auto px-4 py-16 font-sans">
-      <div className="flex flex-col lg:flex-row gap-12 bg-white rounded-3xl overflow-hidden">
+      <div className="flex flex-col lg:flex-row gap-8 bg-white rounded-3xl overflow-hidden shadow-lg">
+        {/* Left Image */}
         <div
-          className="w-full lg:w-1/2 flex justify-center items-center p-6"
+          className="w-full lg:w-1/2 flex justify-center items-center p-4 lg:p-6"
           style={{
             backgroundImage: `url(${K4bg})`,
             backgroundRepeat: 'no-repeat',
@@ -49,33 +50,35 @@ const CareerDevelopment = () => {
             backgroundPosition: 'center',
           }}
         >
-          <img src={K4} alt="Career Illustration" className="max-w-[480px] w-full" />
+          <img
+            src={K4}
+            alt="Career Illustration"
+            className="max-w-[400px] md:max-w-[480px] w-full"
+          />
         </div>
 
+        {/* Right Content */}
         <div className="w-full lg:w-1/2">
-          <div className="h-[420px] overflow-y-auto pr-4 custom-red-scrollbar space-y-10 py-2">
+          <div className="flex flex-col gap-6 md:gap-8 overflow-y-auto max-h-[500px] pr-2 md:pr-4 custom-scrollbar">
             {items.map((item, index) => (
-              <div key={index} className="flex gap-5">
-                <img src={item.icon} alt="icon" className="w-14 h-14 flex-shrink-0" />
+              <div key={index} className="flex gap-4 md:gap-5 bg-gray-50 p-4 rounded-xl shadow-sm hover:shadow-md transition">
+                <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-white shadow-md">
+                  <img src={item.icon} alt={item.title} className="w-10 h-10 md:w-12 md:h-12" />
+                </div>
 
                 <div>
-                  <h3 className="text-xl font-bold text-slate-800 mb-3">
+                  <h3 className="text-sm md:text-lg font-bold text-slate-800 mb-1 md:mb-2">
                     {item.title}
                   </h3>
-
                   {item.desc && (
-                    <p className="text-slate-600 leading-relaxed">
+                    <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
                       {item.desc}
                     </p>
                   )}
-
                   {item.list && (
-                    <ul className="space-y-3 text-slate-600">
+                    <ul className="list-disc list-inside text-xs md:text-sm text-slate-600 mt-1 md:mt-2">
                       {item.list.map((li, i) => (
-                        <li key={i} className="flex gap-3">
-                          <span className="mt-2 w-2 h-2 bg-slate-400 rounded-full"></span>
-                          {li}
-                        </li>
+                        <li key={i}>{li}</li>
                       ))}
                     </ul>
                   )}
@@ -85,13 +88,19 @@ const CareerDevelopment = () => {
           </div>
         </div>
       </div>
+
+      {/* Custom Scrollbar */}
       <style jsx>{`
-        .custom-red-scrollbar::-webkit-scrollbar {
+        .custom-scrollbar::-webkit-scrollbar {
           width: 4px;
         }
-        .custom-red-scrollbar::-webkit-scrollbar-thumb {
+        .custom-scrollbar::-webkit-scrollbar-thumb {
           background: #ef4444;
           border-radius: 10px;
+        }
+        .custom-scrollbar {
+          scrollbar-width: thin;
+          scrollbar-color: #ef4444 transparent;
         }
       `}</style>
     </section>

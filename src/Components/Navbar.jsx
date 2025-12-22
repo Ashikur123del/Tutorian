@@ -3,6 +3,7 @@ import { FaSearch, FaChevronDown, FaBars, FaTimes } from 'react-icons/fa'
 import { motion, AnimatePresence } from 'framer-motion'
 import Logo from '../assets/images/Logo.svg'
 import Bghero from '../assets/images/Bghero.png'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -51,7 +52,7 @@ const Navbar = () => {
         <div className='flex items-center justify-between h-20 gap-4'>
           
           <div className='flex-shrink-0'>
-            <img src={Logo} alt='Logo' className='h-10 md:h-12 cursor-pointer' />
+           <Link to="/"> <img src={Logo} alt='Logo' className='h-10 md:h-12 cursor-pointer' /></Link>
           </div>
 
           <div className='hidden md:flex relative flex-grow max-w-sm'>

@@ -1,156 +1,187 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import Course1 from "../../assets/images/Course1.png";
-import Course2 from "../../assets/images/Coures2.png";
-import Course3 from "../../assets/images/Coures3.png";
-import Course4 from "../../assets/images/Coures4.png";
+import React, { useState } from 'react'
+import { motion } from 'framer-motion'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
+// Swiper CSS
+import 'swiper/css'
+
+// Course Images
+import Course1 from '../../assets/images/Course1.png'
+import Course2 from '../../assets/images/Coures2.png'
+import Course3 from '../../assets/images/Coures3.png'
+import Course4 from '../../assets/images/Coures4.png'
+import { Link } from 'react-router-dom'
+
+// Course data
 const courses = [
   {
     id: 1,
-    title: "১০-২০তম গ্রেড প্রিলি+লিখিত ফুল কোর্স",
-    description: "বিশেষজ্ঞদের পরামর্শে ভবিষ্যৎ গড়ুন বুদ্ধিমত্তার সাথে শিখুন।",
+    title: '১০-২০তম গ্রেড প্রিলি+লিখিত ফুল কোর্স',
+    description: 'বিশেষজ্ঞদের পরামর্শে ভবিষ্যৎ গড়ুন বুদ্ধিমত্তার সাথে শিখুন।',
     image: Course1,
-    category: "ফ্রিল্যান্সিং",
-    batches: ["সকালের ব্যাচ", "বিকালের ব্যাচ", "রাতের ব্যাচ"],
+    category: 'ফ্রিল্যান্সিং',
+    batches: ['সকালের ব্যাচ', 'বিকালের ব্যাচ', 'রাতের ব্যাচ']
   },
   {
     id: 2,
-    title: "১০-২০তম গ্রেড প্রিলি+লিখিত ফুল কোর্স",
-    description: "বিশেষজ্ঞদের পরামর্শে ভবিষ্যৎ গড়ুন বুদ্ধিমত্তার সাথে শিখুন।",
+    title: '১০-২০তম গ্রেড প্রিলি+লিখিত ফুল কোর্স',
+    description: 'বিশেষজ্ঞদের পরামর্শে ভবিষ্যৎ গড়ুন বুদ্ধিমত্তার সাথে শিখুন।',
     image: Course2,
-    category: "ডিজাইন",
-    batches: ["সকালের ব্যাচ", "বিকালের ব্যাচ", "রাতের ব্যাচ"],
+    category: 'ফ্রিল্যান্সিং',
+    batches: ['সকালের ব্যাচ', 'বিকালের ব্যাচ', 'রাতের ব্যাচ']
   },
   {
     id: 3,
-    title: "১০-২০তম গ্রেড প্রিলি+লিখিত ফুল কোর্স",
-    description: "বিশেষজ্ঞদের পরামর্শে ভবিষ্যৎ গড়ুন বুদ্ধিমত্তার সাথে শিখুন।",
+    title: '১০-২০তম গ্রেড প্রিলি+লিখিত ফুল কোর্স',
+    description: 'বিশেষজ্ঞদের পরামর্শে ভবিষ্যৎ গড়ুন বুদ্ধিমত্তার সাথে শিখুন।',
     image: Course3,
-    category: "ডেভেলপমেন্ট",
-    batches: ["সকালের ব্যাচ", "বিকালের ব্যাচ", "রাতের ব্যাচ"],
+    category: 'প্রোগ্রামিং',
+    batches: ['সকালের ব্যাচ', 'বিকালের ব্যাচ', 'রাতের ব্যাচ']
   },
   {
     id: 4,
-    title: "১০-২০তম গ্রেড প্রিলি+লিখিত ফুল কোর্স",
-    description: "বিশেষজ্ঞদের পরামর্শে ভবিষ্যৎ গড়ুন বুদ্ধিমত্তার সাথে শিখুন।",
+    title: '১০-২০তম গ্রেড প্রিলি+লিখিত ফুল কোর্স',
+    description: 'বিশেষজ্ঞদের পরামর্শে ভবিষ্যৎ গড়ুন বুদ্ধিমত্তার সাথে শিখুন।',
     image: Course4,
-    category: "মার্কেটিং",
-    batches: ["সকালের ব্যাচ", "বিকালের ব্যাচ", "রাতের ব্যাচ"],
-  },
-];
+    category: 'মার্কেটিং',
+    batches: ['সকালের ব্যাচ', 'বিকালের ব্যাচ', 'রাতের ব্যাচ']
+  }
+]
 
-/* ======= CARD ANIMATIONS ======= */
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-  hover: { scale: 1.03, y: -5, transition: { duration: 0.3 } },
-};
-
-const CourseCard = ({ course }) => (
-  <motion.div
-    variants={cardVariants}
-    initial="hidden"
-    whileInView="visible"
-    whileHover="hover"
-    viewport={{ once: true }}
-    className="bg-white rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.08)]
-               cursor-pointer border border-gray-100 flex flex-col p-3 transition-all"
-  >
-    <div className="relative rounded-lg overflow-hidden h-48 mb-4">
-      <img
-        src={course.image}
-        alt={course.title}
-        className="w-full h-full object-cover"
-      />
-      <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-1 px-2">
-        {course.batches.map((batch, idx) => (
-          <span
-            key={idx}
-            className="bg-white text-[10px] px-2 py-1 rounded-md shadow-2xl border border-gray-600 text-gray-700 font-medium"
-          >
-            {batch}
-          </span>
-        ))}
+// Course Card Component
+const CourseCard = ({ course }) => {
+  return (
+    <motion.div
+      layout
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      className='bg-white rounded-3xl shadow-lg border border-gray-100 flex flex-col p-2 md:p-6 hover:shadow-2xl transition-all duration-300 h-full min-h-[480px] md:min-h-[520px]'
+    >
+      {/* Image Section */}
+      <div className='relative rounded-2xl overflow-hidden h-56 md:h-64 mb-2'>
+        <img
+          src={course.image}
+          alt={course.title}
+          className='w-full h-full object-cover'
+        />
+        <div className='absolute bottom-3 left-0 right-0 flex flex-wrap justify-center gap-1.5 px-2'>
+          {course.batches.map((batch, index) => (
+            <span
+              key={index}
+              className='bg-white/90 backdrop-blur-sm text-[10px] md:text-xs px-2 py-1.5 rounded-lg border border-gray-200 text-gray-800 font-bold shadow-sm'
+            >
+              {batch}
+            </span>
+          ))}
+        </div>
       </div>
-    </div>
-    <div className="flex-grow text-left px-1 mt-2">
-      <h3 className="text-[18px] font-bold text-gray-800 mb-2 leading-tight">
-        {course.title}
-      </h3>
-      <p className="text-[13px] text-gray-500 mb-5 leading-relaxed">
-        {course.description}
-      </p>
-    </div>
-    <div className="mt-auto px-1 pb-1">
-      <button className="w-full bg-[#ff1a69] hover:bg-[#e6155d] text-white font-medium py-3 rounded-xl transition-colors text-sm">
-        Course Details
-      </button>
-    </div>
-  </motion.div>
-);
 
-export default function CourseSelection() {
-  const categories = ["সকল"].concat([...new Set(courses.map((c) => c.category))]);
-  const [activeCategory, setActiveCategory] = useState("সকল");
+      {/* Content Section */}
+      <div className='flex-grow text-left'>
+        <h3 className='text-[20px] md:text-[24px] font-extrabold text-[#1a1a1a] mb-2 leading-tight'>
+          {course.title}
+        </h3>
+        <p className='text-[14px] md:text-[16px] text-gray-500 font-medium leading-relaxed mb-6'>
+          {course.description}
+        </p>
+      </div>
+
+      {/* Action Button */}
+      <Link to="/coure" className='w-full text-center bg-gradient-to-r from-[#FF7844] to-[#FC1C69] text-white font-bold py-4 rounded-2xl text-[16px] active:scale-95 transition-transform duration-200 shadow-lg shadow-orange-200'>
+        Course Details
+      </Link>
+    </motion.div>
+  )
+}
+
+// Main Component
+export default function CourseSelection () {
+  const [activeCategory, setActiveCategory] = useState('সকল')
+  const categories = [
+    'সকল',
+    'ডিজাইন',
+    'ফ্রিল্যান্সিং',
+    'প্রোগ্রামিং',
+    'মার্কেটিং',
+    'ব্যবসা'
+  ]
 
   const filteredCourses =
-    activeCategory === "সকল"
+    activeCategory === 'সকল'
       ? courses
-      : courses.filter((course) => course.category === activeCategory);
-
-  /* ====== CATEGORY BUTTON ANIMATION ====== */
-  const buttonVariants = {
-    inactive: { scale: 1 },
-    active: { scale: 1.05, transition: { duration: 0.2 } },
-  };
+      : courses.filter(course => course.category === activeCategory)
 
   return (
-    <div className="bg-[#fcfcfc] min-h-[80vh] py-10 md:py-16 px-4 font-sans">
-      <div className="container mx-auto text-center">
-        <h1 className="text-2xl md:text-4xl font-extrabold text-gray-900 mb-10">
-          আমাদের লাইভ কোর্স সমূহ
-        </h1>
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map((cat, index) => {
-            const count =
-              cat === "সকল"
-                ? courses.length
-                : courses.filter((c) => c.category === cat).length;
-            return (
-              <motion.button
-                key={index}
-                onClick={() => setActiveCategory(cat)}
-                variants={buttonVariants}
-                animate={activeCategory === cat ? "active" : "inactive"}
-                className={`flex flex-col items-center justify-center min-w-[100px] py-2 px-4 rounded-lg border transition-all ${
-                  activeCategory === cat
-                    ? "bg-white border-gray-400 shadow-sm"
-                    : "bg-[#f1f5f9]/50 border-gray-300 hover:border-gray-200"
-                }`}
-              >
-                <span className="text-[14px] font-bold text-gray-800">{cat}</span>
-                <span className="text-[11px] text-gray-500">{count} কোর্স</span>
-              </motion.button>
-            );
-          })}
+    <div className='bg-[#fcfcfc] min-h-screen py-8 md:py-16 px-4 font-sans overflow-hidden'>
+      <div className='container mx-auto'>
+        <div className='flex flex-col xl:items-center justify-between gap-6 mb-12'>
+          <h1 className='text-2xl md:text-4xl font-black text-[#1a1a1a] tracking-tight text-center md:text-left'>
+            আমাদের লাইভ কোর্স সমূহ
+          </h1>
+
+          <div className='flex overflow-x-auto gap-2 pb-2 no-scrollbar -mx-4 px-2 md:mx-0 md:px-0'>
+            {categories.map((cat, index) => {
+              const count =
+                cat === 'সকল'
+                  ? courses.length
+                  : courses.filter(c => c.category === cat).length
+              const isActive = activeCategory === cat
+              return (
+                <Link to="/"
+                  key={index}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`flex-shrink-0 flex flex-col items-center justify-center min-w-[100px] py-2 px-5 rounded-2xl border transition-all duration-300 ${
+                    isActive
+                      ? 'bg-gradient-to-br from-[#FF7844] to-[#FC1C69] text-white border-transparent shadow-xl'
+                      : 'bg-white border-gray-200 text-gray-600 hover:border-orange-300'
+                  }`}
+                >
+                  <span className='text-[14px] font-bold'>{cat}</span>
+                  <span
+                    className={`text-[11px] mt-0.5 ${
+                      isActive ? 'text-white/80' : 'text-gray-400'
+                    }`}
+                  >
+                    {count} কোর্স
+                  </span>
+                </Link>
+              )
+            })}
+          </div>
         </div>
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-          initial="hidden"
-          animate="visible"
-        >
+
+        <div className='relative'>
           {filteredCourses.length > 0 ? (
-            filteredCourses.map((course) => (
-              <CourseCard key={course.id} course={course} />
-            ))
+            <Swiper
+              modules={[]}
+              spaceBetween={20}
+              slidesPerView={1.2}
+              centeredSlides={false}
+              grabCursor={true}
+              loop={filteredCourses.length > 1}
+              breakpoints={{
+                640: { slidesPerView: 1.2, spaceBetween: 15 },
+                768: { slidesPerView: 2.2, spaceBetween: 20 },
+                1024: { slidesPerView: 4, spaceBetween: 30 }
+              }}
+              className='course-swiper pb-16'
+            >
+              {filteredCourses.map(course => (
+                <SwiperSlide key={course.id}>
+                  <CourseCard course={course} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
           ) : (
-            <p className="col-span-full text-gray-500">
-              কোনো কোর্স পাওয়া যায়নি।
-            </p>
+            <div className='text-center py-20'>
+              <p className='text-gray-400 text-lg'>
+                এই ক্যাটাগরিতে কোনো কোর্স পাওয়া যায়নি।
+              </p>
+            </div>
           )}
-        </motion.div>
+        </div>
       </div>
     </div>
-  );
+  )
 }

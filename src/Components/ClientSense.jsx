@@ -13,14 +13,12 @@ import Man1bg from '../assets/images/Man1bg.svg';
 const TestimonialCard = ({ text, name, role, org, img, bg }) => (
   <div className="relative group h-full rounded-[32px] overflow-hidden p-[2px]">
     {/* Animated Border */}
-    <div className="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] 
-                    bg-[conic-gradient(from_90deg_at_50%_50%,#E2E8F0_0%,#E2E8F0_40%,#6366f1_45%,#a855f7_50%,#6366f1_55%,#E2E8F0_60%,#E2E8F0_100%)] 
-                    group-hover:bg-[conic-gradient(from_90deg_at_50%_50%,#6366f1_0%,#a855f7_25%,#6366f1_50%,#a855f7_75%,#6366f1_100%)] 
-                    transition-all duration-500" />
+    <div className="absolute inset-0 rounded-[32px] animate-spin-slow
+      bg-[conic-gradient(from_0deg,#FF7844,#FC1C69,#FF7844)] transition-all duration-700" />
 
     {/* Inner Card */}
     <div className="relative z-10 h-full w-full bg-white rounded-[30px] overflow-hidden flex flex-col
-                    transition-transform duration-500 group-hover:scale-105 group-hover:shadow-2xl">
+      transition-transform duration-500 group-hover:scale-105 group-hover:shadow-2xl">
       
       {/* Background Image with overlay */}
       <div 
@@ -35,7 +33,7 @@ const TestimonialCard = ({ text, name, role, org, img, bg }) => (
 
       {/* Content */}
       <div className="relative z-20 p-8 md:p-10 flex flex-col h-full 
-                      bg-gradient-to-b from-white/70 to-white/30 backdrop-blur-sm">
+        bg-gradient-to-b from-white/70 to-white/30 backdrop-blur-sm">
         {/* Quote Icon */}
         <div className="text-indigo-600 mb-6 opacity-30">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
@@ -43,7 +41,6 @@ const TestimonialCard = ({ text, name, role, org, img, bg }) => (
           </svg>
         </div>
 
-        
         <p className="text-[#374151] text-[16px] md:text-[17px] leading-6 mb-8 font-medium">
           {text}
         </p>
@@ -51,12 +48,12 @@ const TestimonialCard = ({ text, name, role, org, img, bg }) => (
           <img 
             src={img} 
             alt={name} 
-            className="w-14 h-14 rounded-full object-cover border-2 border-indigo-500 shadow-md 
-                       transition-transform duration-500 group-hover:scale-110 group-hover:ring-2 group-hover:ring-indigo-300" 
+            className="w-14 h-14 rounded-full object-cover border-2 border-[#FF7844] shadow-md 
+              transition-transform duration-500 group-hover:scale-110 group-hover:ring-2 group-hover:ring-indigo-300" 
           />
           <div>
             <h4 className="font-bold text-[#111827] text-[18px]">{name}</h4>
-            <p className="text-indigo-600 text-[13px] font-bold">{role}, {org}</p>
+            <p className="bg-gradient-to-r from-[#FF7844] to-[#FC1C69] bg-clip-text text-transparent font-bold">{role}, {org}</p>
           </div>
         </div>
       </div>
@@ -79,9 +76,9 @@ const ClientSense = () => {
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-6 md:mb-16">
           <h2 className="text-2xl md:text-4xl font-black text-[#111827] mb-4">
-            গ্রাহকদের <span className="text-indigo-600">অভিজ্ঞতা</span>
+            গ্রাহকদের <span className="bg-gradient-to-r from-[#FF7844] to-[#FC1C69] bg-clip-text text-transparent font-bold">অভিজ্ঞতা</span>
           </h2>
-          <div className="w-24 h-1.5 bg-indigo-600 mx-auto rounded-full"></div>
+          <div className="w-24 h-1.5 bg-gradient-to-r from-[#FF7844] to-[#FC1C69] mx-auto rounded-full "></div>
         </div>
 
         <Swiper
@@ -110,8 +107,13 @@ const ClientSense = () => {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
         }
+
+        .animate-spin-slow {
+          animation: spin 15s linear infinite;
+        }
+
         .swiper-pagination-bullet {
-          background: #6366f1 !important;
+          background: linear-gradient(to right, #FF7844, #FC1C69) !important;
           opacity: 0.4;
           width: 12px;
           height: 12px;
@@ -119,10 +121,12 @@ const ClientSense = () => {
           border-radius: 50%;
           transition: all 0.3s ease;
         }
+
         .swiper-pagination-bullet-active {
           opacity: 1;
           width: 28px !important;
           border-radius: 12px !important;
+          background: linear-gradient(to right, #FF7844, #FC1C69) !important;
         }
       `}</style>
     </section>

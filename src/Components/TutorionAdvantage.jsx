@@ -41,6 +41,7 @@ const TutorionAdvantage = () => {
   return (
     <section className='py-8 md:py-16 bg-white'>
       <div className='container mx-auto px-4'>
+        {/* Header */}
         <div className='text-center mb-12'>
           <h2 className='text-2xl md:text-4xl font-bold text-gray-900'>
             টিউটরিয়ানের সাথে এগিয়ে থাকুন!
@@ -53,33 +54,27 @@ const TutorionAdvantage = () => {
           </p>
         </div>
 
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
+        {/* Cards Grid */}
+        <div className='grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2 md:gap-6'>
           {advantages.map(item => (
             <div
               key={item.id}
-              className='relative rounded-xl p-4 text-center bg-cover bg-no-repeat 
-                 shadow-md hover:shadow-xl transition'
+              className='relative rounded-xl p-4 sm:p-6 text-center bg-cover bg-no-repeat
+                 shadow-md hover:shadow-xl transition h-full flex flex-col items-center'
               style={{
                 backgroundImage: `url(${item.bg})`
               }}
             >
-              <div
-                className='w-30 h-30 mx-auto rounded-full  bg-white
-                flex items-center justify-center
-                shadow-md hover:scale-105 transition duration-300 mb-10'
-              >
-                <div
-                  className='w-24 h-24 rounded-full bg-white 
-                  flex items-center justify-center shadow-2xl'
-                >
-                  <img src={item.icon} alt={item.title} className='w-14 h-14' />
-                </div>
+              {/* Icon */}
+              <div className='w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mx-auto rounded-full bg-white flex items-center justify-center shadow-md hover:scale-105 transition duration-300 mb-6 sm:mb-8'>
+                <img src={item.icon} alt={item.title} className='w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20' />
               </div>
 
-              <h3 className='text-xl md:text-2xl font-semibold text-gray-900 mb-3'>
+              {/* Title & Description */}
+              <h3 className='text-base sm:text-xl md:text-2xl font-semibold text-gray-900 mb-2 sm:mb-3'>
                 {item.title}
               </h3>
-              <p className='text-base font-semibold text-gray-600 leading-relaxed'>
+              <p className='text-sm sm:text-base md:text-base font-semibold text-gray-600 leading-relaxed'>
                 {item.desc}
               </p>
             </div>

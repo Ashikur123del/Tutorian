@@ -26,7 +26,6 @@ const FooterColumn = ({ title, links }) => (
     </ul>
   </div>
 )
-
 const Footer = () => {
   const footerStyle = {
     backgroundImage: `url(${Fimg})`,
@@ -53,9 +52,8 @@ const Footer = () => {
   return (
     <footer className='pt-16 pb-10 px-4 md:px-20 font-sans text-[#444]' style={footerStyle}>
       <div className='container mx-auto'>
-        {/* Grid Sections */}
         <div className='grid grid-cols-1 md:grid-cols-4 gap-10 mb-12'>
-          {/* About */}
+
           <div>
             <img src={Logo} alt='Tutorian Logo' className='h-12 mb-5' />
             <p className='text-sm md:text-[15px] leading-relaxed text-gray-700 font-medium'>
@@ -63,13 +61,8 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Quick Links */}
           <FooterColumn title='কুইক লিঙ্ক' links={quickLinks} />
-
-          {/* Company */}
           <FooterColumn title='প্রতিষ্ঠান' links={companyLinks} />
-
-          {/* Contact */}
           <div>
             <h3 className='font-bold text-[20px] mb-6 text-black'>আমাদের সাথে যোগাযোগ করুন</h3>
             <div className='flex items-center gap-3 mb-4'>
@@ -88,8 +81,6 @@ const Footer = () => {
             </div>
           </div>
         </div>
-
-        {/* App Buttons */}
         <div className='flex flex-wrap justify-center gap-4 mb-6'>
           <a href='#' target='_blank' rel='noopener noreferrer'>
             <img src={PalyCard} alt='Google Play' className='h-12 md:h-15 rounded-lg shadow-md hover:scale-105 transition-transform duration-300' />
@@ -98,8 +89,6 @@ const Footer = () => {
             <img src={Flmsges} alt='App Store' className='h-10 md:h-12 rounded-lg shadow-md hover:scale-105 transition-transform duration-300' />
           </a>
         </div>
-
-        {/* Footer Bottom */}
         <div className='flex flex-col md:flex-row items-center justify-between gap-6 border-t border-gray-300 pt-8'>
           <div className='flex items-center gap-4'>
             <span className='font-bold text-gray-800'>Follow Us</span>

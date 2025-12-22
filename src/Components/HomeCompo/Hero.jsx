@@ -1,139 +1,133 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay } from 'swiper/modules'
+import 'swiper/css'
 
-// Assets
 import Man1 from '../../assets/images/man1.png'
 import Man2 from '../../assets/images/man2.png'
 import Man3 from '../../assets/images/man3.png'
+import Man4 from '../../assets/images/hero4.svg'
+import Man5 from '../../assets/images/hero5.svg'
+
 import bpsvg from '../../assets/images/bpsvg.svg'
 import Bg1 from '../../assets/images/bg-1.png'
 import Bg2 from '../../assets/images/Bg-2.png'
 import Bg3 from '../../assets/images/Bg-3.png'
 import Folder from '../../assets/images/Folder.svg'
 
-/* ================= Animations ================= */
+// Animation
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
 }
 
 const stagger = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } }
+  visible: { transition: { staggerChildren: 0.15 } }
 }
 
-/* ================= Image Card ================= */
-const ImageCard = ({ bg, img, alt, delay }) => (
+// Image Card
+const ImageCard = ({ bg, img, alt }) => (
   <motion.div
-    initial={{ opacity: 0, scale: 0.95 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5, delay }}
     whileHover={{ y: -10 }}
-    className='relative w-full h-full rounded-2xl md:rounded-3xl overflow-hidden shadow-lg bg-cover bg-center'
+    className='relative w-full h-[320px] sm:h-[380px] md:h-[500px] rounded-2xl overflow-hidden shadow-xl bg-cover bg-center'
     style={{ backgroundImage: `url(${bg})` }}
   >
     <img
       src={img}
       alt={alt}
-      className='w-full h-full object-cover transition-transform duration-500 hover:scale-105'
+      className='w-full h-auto object-cover transition-transform duration-500 hover:scale-105'
     />
   </motion.div>
 )
 
-/* ================= Data ================= */
+// Right Side Slider Cards
 const cards = [
-  { bg: Bg1, img: Man1, alt: 'Student 1', delay: 0.2 },
-  { bg: Bg2, img: Man2, alt: 'Student 2', delay: 0.4 },
-  { bg: Bg3, img: Man3, alt: 'Student 3', delay: 0.6 }
+  { bg: Bg1, img: Man1, alt: 'Student 1' },
+  { bg: Bg2, img: Man2, alt: 'Student 2' },
+  { bg: Bg3, img: Man3, alt: 'Student 3' },
+  { bg: Bg1, img: Man4, alt: 'Student 4' }, // new
+  { bg: Bg2, img: Man5, alt: 'Student 5' }  // new
 ]
 
-/* ================= Hero ================= */
 const Hero = () => {
   return (
     <section
-      className='relative w-full min-h-[90vh] flex items-center bg-no-repeat overflow-hidden'
+      className='relative w-full min-h-[70vh] md:min-h-[90vh] flex items-center overflow-hidden'
       style={{
         backgroundImage: `url(${bpsvg})`,
         backgroundPosition: 'right center',
         backgroundSize: 'cover'
       }}
     >
-      <div className='container mx-auto px-5 py-10 lg:py-0'>
-        <div className='grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center'>
-          {/* ================= Left Content ================= */}
+      <div className='container mx-auto px-5 py-6'>
+        <div className='grid grid-cols-1 lg:grid-cols-12 gap-8 items-center'>
+
+          {/* LEFT CONTENT */}
           <motion.div
             variants={stagger}
             initial='hidden'
             animate='visible'
-            className='lg:col-span-7 space-y-5 md:space-y-7 text-center lg:text-left'
+            className='lg:col-span-7 space-y-3 md:space-y-6 text-center lg:text-left'
           >
-            <motion.div
-              variants={fadeUp}
-              className='flex items-center justify-center lg:justify-start gap-3'
-            >
-              <p className='text-base md:text-lg lg:text-xl font-medium text-gray-800'>
+            <motion.div variants={fadeUp} className='flex justify-center lg:justify-start items-center gap-3'>
+              <p className='text-lg font-medium text-gray-800'>
                 শিখবো এখন লাইভে
               </p>
-              <span className='relative flex h-3 w-3'>
-                <span className='animate-ping absolute h-full w-full rounded-full bg-pink-400 opacity-75' />
-                <span className='relative h-3 w-3 rounded-full bg-pink-500' />
+              <span className='relative flex h-5 w-5'>
+                <span className='animate-ping absolute h-full w-full rounded-full bg-gradient-to-r from-[#d65826] to-[#ee0d5c] opacity-75' />
+                <span className='relative h-4 w-4 rounded-full bg-gradient-to-r from-[#FF7844] to-[#FC1C69]' />
               </span>
             </motion.div>
 
             <motion.h1
               variants={fadeUp}
-              className='text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-[1.2] md:leading-tight'
+              className='text-3xl md:text-5xl lg:text-7xl font-extrabold text-gray-900 leading-tight'
             >
               সরকারি চাকরির সর্বোচ্চ <br className='hidden md:block' />
-              প্রস্তুতি <span className='text-[#FF006E]'>টিউটোরিয়ান</span>
+              প্রস্তুতি{' '}
+              <span className='bg-gradient-to-r from-[#FF7844] to-[#FC1C69] bg-clip-text text-transparent'>
+                টিউটোরিয়ান
+              </span>
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
-              className='text-gray-600 text-base md:text-lg lg:text-xl max-w-xl mx-auto lg:mx-0 leading-relaxed'
+              className='text-gray-600 max-w-xl mx-auto lg:mx-0'
             >
-              সরকারি চাকরি হোক বা ইংরেজিতে দক্ষতা — সব প্রস্তুতি এখন ঘরে বসেই
-              লাইভ ক্লাসে। প্রাইমারি, নিবন্ধন, গ্রেড ১০–২০, জব ইংলিশ ও স্পোকেন
-              ইংলিশ এক প্ল্যাটফর্মে।
+              সরকারি চাকরি হোক বা ইংরেজিতে দক্ষতা — সব প্রস্তুতি এখন ঘরে বসেই লাইভ ক্লাসে।
             </motion.p>
 
-            <motion.div
-              variants={fadeUp}
-              className='flex justify-center lg:justify-start'
-            >
+            <motion.div variants={fadeUp}>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className='inline-flex items-center gap-3 bg-[#FF006E] text-white px-7 md:px-9 py-3 md:py-4 rounded-xl md:rounded-2xl font-bold text-base md:text-lg shadow-xl hover:bg-pink-600 transition'
+                className='inline-flex items-center gap-3 bg-gradient-to-r from-[#FF7844] to-[#FC1C69] text-white px-8 py-4 rounded-xl font-bold shadow-lg'
               >
-                <img src={Folder} alt='folder' className='w-5 md:w-6' />
+                <img src={Folder} alt='folder' className='w-5' />
                 সব কোর্স দেখুন
               </motion.button>
             </motion.div>
           </motion.div>
 
-          {/* ================= Right Images ================= */}
-          <div className='lg:col-span-5 w-full max-w-[320px] sm:max-w-md lg:max-w-full mx-auto'>
-            <div className='grid grid-cols-2 gap-3 md:gap-4'>
-              {/* Left Column of Images */}
-              <div className='flex flex-col gap-3 md:gap-4'>
-                <div className='aspect-[3/4]'>
-                  <ImageCard {...cards[0]} />
-                </div>
-                <div className='aspect-[3/4]'>
-                  <ImageCard {...cards[1]} />
-                </div>
-              </div>
-
-              {/* Right Column of Image (The Tall One) */}
-              <div className='flex items-center'>
-                <div className='aspect-[3/5] w-full'>
-                  <ImageCard {...cards[2]} />
-                </div>
-              </div>
-            </div>
+          {/* RIGHT SIDE SLIDER */}
+          <div className='lg:col-span-5 w-full max-w-[260px] sm:max-w-md lg:max-w-full mx-auto'>
+            <Swiper
+              modules={[Autoplay]}
+              autoplay={{ delay: 3000, disableOnInteraction: false }}
+              loop
+              speed={900}
+              slidesPerView={1}
+            >
+              {cards.map((card, index) => (
+                <SwiperSlide key={index}>
+                  <ImageCard {...card} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
+
         </div>
       </div>
     </section>

@@ -31,7 +31,7 @@ const ExamCorner = () => {
         </h2>
 
         {/* Tags Section */}
-        <div className='flex flex-wrap justify-center gap-3 mb-8  md:mb-16'>
+        <div className='flex flex-wrap justify-center gap-2 mb-8 md:mb-16'>
           {tags.map((tag, index) => (
             <span
               key={index}
@@ -43,33 +43,32 @@ const ExamCorner = () => {
         </div>
 
         {/* Categories Grid */}
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8'>
+        <div className='grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8'>
           {categories.map(cat => (
             <div
               key={cat.id}
-              className='group relative rounded-3xl p-8 flex flex-col items-center justify-center shadow-2xl hover:-translate-y-3 transition-all duration-300 cursor-pointer h-72 overflow-hidden border border-white/10'
+              className='group relative rounded-3xl p-4 sm:p-6 flex flex-col items-center justify-center shadow-lg sm:shadow-2xl transition-all duration-300 cursor-pointer h-52 sm:h-64 md:h-72 overflow-hidden border border-white/10'
             >
-              {/* Background Image with Overlay */}
               <div className='absolute inset-0 z-0'>
                 <img
                   src={BgExam}
                   alt='bg'
                   className='w-full h-full object-cover group-hover:scale-110 transition-transform duration-500'
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#102244] via-[#102244]/40 to-transparent"></div>
+                {/* <div className="absolute inset-0 bg-gradient-to-t from-[#102244] via-[#102244]/40 to-transparent"></div> */}
               </div>
 
               {/* Icon Container */}
-              <div className='mb-6 relative z-10 transform group-hover:rotate-6 transition-transform duration-300'>
+              <div className='mb-4 sm:mb-6 relative z-10 transform transition-transform duration-300 group-hover:rotate-3'>
                 <img
                   src={cat.icon}
                   alt={cat.title}
-                  className='w-20 h-20 md:w-24 md:h-24 object-contain drop-shadow-2xl'
+                  className='w-24 h-24 sm:w-24 sm:h-24 md:w-28 md:h-28 object-contain drop-shadow-xl'
                 />
               </div>
 
               {/* Card Text */}
-              <h3 className='text-white text-xl md:text-2xl font-bold relative z-10 group-hover:text-blue-300 transition-colors'>
+              <h3 className='text-white text-base sm:text-xl md:text-2xl font-bold relative z-10 group-hover:text-blue-300 transition-colors text-center'>
                 {cat.title}
               </h3>
 
