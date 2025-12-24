@@ -84,7 +84,7 @@ const LiveCourse = ({ course }) => {
 
       {/* Action Button */}
       <Link
-        to="/coure"
+        to="/couresdeitlespage"
         className='w-full text-center bg-gradient-to-r from-[#FF7844] to-[#FC1C69] text-white font-bold py-4 rounded-2xl text-[16px] active:scale-95 transition-transform duration-200 shadow-lg shadow-orange-200'
       >
         Course Details

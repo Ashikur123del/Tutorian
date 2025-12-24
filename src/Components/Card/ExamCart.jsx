@@ -1,8 +1,5 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay } from 'swiper/modules'
-import 'swiper/css'
 
 import CardBg from '../../assets/images/Card-bg.png'
 import CardOverlay from '../../assets/images/Card-6.svg'
@@ -19,85 +16,56 @@ const programData = [
   { icon: m4, title: 'এক্সাম' }
 ]
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } }
-}
-
-const ProgramCard = ({ icon, title }) => {
-  return (
-    <motion.div
-      variants={cardVariants}
-      whileHover={{ y: -6, scale: 1.02 }}
-      className='relative flex flex-col items-center pt-10 sm:pt-12 w-full max-w-[320px] md:max-w-[400px] mx-auto group'
-    >
-      <div className='absolute top-0 z-20'>
-        <div
-          className='w-16 h-16 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-white rounded-full flex items-center justify-center 
-                        shadow-[0_12px_24px_rgba(0,0,0,0.1)] border-4 border-white transition-transform group-hover:scale-105'
-        >
-          <img
-            src={icon}
-            alt={title}
-            className='w-8 h-8 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain'
-          />
-        </div>
-      </div>
-
-      {/* কার্ড বডি */}
-      <div
-        className='relative w-full h-[140px] sm:h-[220px] md:h-[300px] bg-transparent flex flex-col justify-end pb-4 sm:pb-8'
-        style={{
-          backgroundImage: `url(${CardOverlay})`,
-          backgroundPosition: 'bottom center',
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: '100% 100%'
-        }}
-      >
-        <h3
-          className='relative z-10 text-center font-bold text-[#1a1a1a] 
-                       text-sm sm:text-xl md:text-3xl px-2'
-        >
-          {title}
-        </h3>
-      </div>
-    </motion.div>
-  )
-}
-
 const ExamCart = () => {
   return (
     <section
-      className='py-5 md:py-20 bg-no-repeat bg-cover bg-center min-h-[150px] md:min-h-[600px]'
+      className="py-4 md:py-24 bg-no-repeat bg-cover bg-center"
       style={{ backgroundImage: `url(${CardBg})` }}
     >
-      <div className='container mx-auto px-4'>
-        <h2 className='text-xl md:text-4xl font-black text-center mb-5 md:mb-10 text-[#1a1a1a]'>
+      <div className="container mx-auto px-4">
+        <h2 className="text-2xl md:text-5xl font-black text-center mb-4 md:mb-20 text-[#1a1a1a]">
           আমাদের প্রোগ্রাম সমূহ
         </h2>
 
-        {/* Swiper */}
-        <Swiper
-          modules={[Autoplay]}
-          spaceBetween={10}
-          slidesPerView={2}
-          breakpoints={{
-            768: {
-              slidesPerView: 4,
-              spaceBetween: 20,
-              autoplay: { delay: 3000 }
-            }
-          }}
-          autoplay={false}
-          loop={true}
-          grabCursor={true}
-        >
+        {/* Responsive Grid with More Width */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-2 ">
           {programData.map((item, index) => (
-            <SwiperSlide key={index}>
-              <ProgramCard {...item} />
-            </SwiperSlide>
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -10 }}
+              className="relative flex flex-col items-center w-full group cursor-pointer"
+            >
+              {/* Icon - Smart Positioning */}
+              <div className="relative z-20 -mb-8 md:-mb-12">
+                <div className="w-20 h-20 md:w-30 md:h-30 bg-white rounded-full flex items-center justify-center shadow-xl border-4 border-white transition-transform group-hover:scale-110">
+                  <img
+                    src={item.icon}
+                    alt={item.title}
+                    className="w-20 h-20 md:w-25 md:h-25 object-contain"
+                  />
+                </div>
+              </div>
+
+              {/* Card Body - Increased Width */}
+              <div
+                className="w-full h-36 md:h-80 flex items-end justify-center pb-6 md:pb-10 rounded-[20px] md:rounded-[32px]"
+                style={{
+                  backgroundImage: `url(${CardOverlay})`,
+                  backgroundPosition: 'center bottom',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: '100% 100%'
+                }}
+              >
+                <h3 className="text-center font-bold text-[#1a1a1a] text-sm sm:text-lg md:text-2xl px-2 leading-tight">
+                  {item.title}
+                </h3>
+              </div>
+            </motion.div>
           ))}
-        </Swiper>
+        </div>
       </div>
     </section>
   )

@@ -88,7 +88,7 @@ const BookCard = ({ item }) => (
         </Icon>
       </div>
       <div className="">
-        <Link to="/addtocards" className='mt-6 inline-block items-center gap-3 bg-gradient-to-r from-[#FF7844] to-[#FC1C69] text-white px-5 md:px-9 py-2 rounded-lg font-bold text-sm md:text-lg shadow-xl'>Add to Cart</Link>
+        <Link to="/educationprat" className='mt-6 inline-block items-center gap-3 bg-gradient-to-r from-[#FF7844] to-[#FC1C69] text-white px-5 md:px-9 py-2 rounded-lg font-bold text-sm md:text-lg shadow-xl'>Book Details</Link>
       </div>
     </div>
   </motion.div>

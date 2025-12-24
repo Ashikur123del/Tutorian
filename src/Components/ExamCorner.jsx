@@ -68,7 +68,7 @@ const ExamCorner = () => {
               </div>
 
               {/* Card Text */}
-              <h3 className='text-white text-base sm:text-xl md:text-2xl font-bold relative z-10 group-hover:text-blue-300 transition-colors text-center'>
+              <h3 className='text-black text-base sm:text-xl md:text-2xl font-bold relative z-10 group-hover:text-blue-300 transition-colors text-center'>
                 {cat.title}
               </h3>
 

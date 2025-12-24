@@ -149,7 +149,7 @@ const EducationParts = () => {
 
                   <button className="w-full bg-[#FF1E67] hover:bg-[#e61a5c] text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition">
                     <IoMdCart size={20} />
-                    এই বইটি কিনুন
+                   এই বইটি কিনুন
                   </button>
 
                   <div className="mt-6 pt-4  space-y-3 text-sm text-gray-700">
