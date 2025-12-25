@@ -7,6 +7,9 @@ import EducationPart from './Pages/EducationPart/EducationPart';
 import Auth from './Components/Auth'
 import CouresDeitlesPage from './Pages/CouresDetilesPage/CouresDeitlesPage';
 import MyCards from './Pages/CouresDetilesPage/MyCards/MyCards'
+import PaymentPages from './Pages/CouresDetilesPage/MyCards/PaymentPages'
+import PaymentSucces from './Components/PaymentComonet/PaymentSucces'
+import Dashboard from './Components/Dashboard/Dashboard'
 
 
 function App() {
@@ -20,7 +23,9 @@ function App() {
         <Route path='/auth' element={<Auth />} />
         <Route path='/couresdeitlespage' element={<CouresDeitlesPage />} />
         <Route path='/mycards' element={<MyCards />} />
-
+        <Route path='/paymentpage' element={<PaymentPages />} />
+        <Route path='/paymentsucces' element={<PaymentSucces />} />
+        <Route path='/dashborad' element={<Dashboard />} />
       </Route>
     </Routes>
   )

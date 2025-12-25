@@ -1,6 +1,7 @@
 import React from 'react'
 import { FaTrashAlt, FaShoppingCart, FaUser, FaWallet } from 'react-icons/fa'
 import Myimg from '../../../assets/images/my2.png'
+import { Link } from 'react-router-dom'
 
 const MyCardBody = () => {
   return (
@@ -133,9 +134,9 @@ const MyCardBody = () => {
               </div>
 
               {/* Checkout Button */}
-              <button className='w-full bg-[#FF2E63] text-white py-5 rounded-2xl font-semibold text-xl hover:shadow-lg hover:shadow-pink-200 transition-all active:scale-[0.98]'>
+              <Link to="/paymentpage" className='w-full inline-block text-center bg-[#FF2E63] text-white py-5 rounded-2xl font-semibold text-xl hover:shadow-lg hover:shadow-pink-200 transition-all active:scale-[0.98]'>
                 এই কোর্সটি কিনুন
-              </button>
+              </Link>
             </div>
           </div>
         </div>

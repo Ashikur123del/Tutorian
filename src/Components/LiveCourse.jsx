@@ -51,10 +51,10 @@ const LiveCourse = ({ course }) => {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
-      className='bg-white rounded-3xl shadow-lg border border-gray-100 flex flex-col p-2 md:p-6 hover:shadow-2xl transition-all duration-300 h-full min-h-[480px] md:min-h-[520px]'
+      className='bg-white rounded-2xl shadow-lg border border-gray-100 flex flex-col p-2 md:p-4 hover:shadow-2xl transition-all duration-300 h-full min-h-[280px] md:min-h-[300px] max-w-[340px]'
     >
       {/* Image Section */}
-      <div className='relative rounded-2xl overflow-hidden h-56 md:h-64 mb-5'>
+      <div className='relative rounded-xl overflow-hidden h-40 md:h-50 mb-5'>
         <img
           src={course.image}
           alt={course.title}
@@ -77,7 +77,7 @@ const LiveCourse = ({ course }) => {
         <h3 className='text-[20px] md:text-[24px] font-extrabold text-[#1a1a1a] mb-3 leading-tight'>
           {course.title}
         </h3>
-        <p className='text-[14px] md:text-[16px] text-gray-500 font-medium leading-relaxed mb-6'>
+        <p className='text-[14px] md:text-[16px] text-gray-500 font-medium leading-relaxed mb-4'>
           {course.description}
         </p>
       </div>
@@ -85,7 +85,7 @@ const LiveCourse = ({ course }) => {
       {/* Action Button */}
       <Link
         to="/couresdeitlespage"
-        className='w-full text-center bg-gradient-to-r from-[#FF7844] to-[#FC1C69] text-white font-bold py-4 rounded-2xl text-[16px] active:scale-95 transition-transform duration-200 shadow-lg shadow-orange-200'
+        className='w-full text-center bg-gradient-to-r from-[#FF7844] to-[#FC1C69] text-white font-bold py-3 rounded-2xl text-[16px] active:scale-95 transition-transform duration-200'
       >
         Course Details
       </Link>
@@ -103,10 +103,10 @@ export default function CourseSelection() {
       : courses.filter(course => course.category === activeCategory)
 
   return (
-    <div className='bg-[#fcfcfc] min-h-screen py-8 md:py-16 px-4 font-sans overflow-hidden'>
+    <div className='bg-[#fcfcfc] min-h-[60vh] md:min-h-[70vh]  py-8 md:py-20 px-4 font-sans overflow-hidden'>
       <div className='container mx-auto'>
         {/* Header & Tabs */}
-        <div className='flex flex-col xl:flex-row xl:items-center justify-between gap-6 mb-12'>
+        <div className='flex flex-col xl:flex-row xl:items-center justify-between gap-2 mb-12'>
           <h1 className='text-3xl md:text-4xl font-black text-[#1a1a1a] tracking-tight text-center md:text-left'>
             আমাদের লাইভ কোর্স সমূহ
           </h1>
@@ -123,7 +123,7 @@ export default function CourseSelection() {
                   key={index}
                   type="button" // prevents default form behavior
                   onClick={() => setActiveCategory(cat)}
-                  className={`flex-shrink-0 flex flex-col items-center justify-center min-w-[100px] py-3 px-5 rounded-2xl border transition-all duration-300 ${
+                  className={`flex-shrink-0 flex flex-col items-center justify-center min-w-[100px] py-2 px-5 rounded-xl border border-gray-300 shadow transition-all duration-300 ${
                     isActive
                       ? 'bg-gradient-to-br from-[#FF7844] to-[#FC1C69] text-white border-transparent shadow-xl'
                       : 'bg-white border-gray-200 text-gray-600 hover:border-orange-300'

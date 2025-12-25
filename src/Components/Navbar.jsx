@@ -111,6 +111,7 @@ const Navbar = () => {
             <Link to="/exam" className='px-4 py-2 hover:text-pink-600 transition-colors cursor-pointer'>পরীক্ষা</Link>
             <Link to="/addtocards" className='px-4 py-2 hover:text-pink-600 transition-colors cursor-pointer'>সকল বই</Link>
             <Link to="/blog" className='px-4 py-2 hover:text-pink-600 transition-colors cursor-pointer'>ব্লগ</Link>
+            <Link to="/dashborad" className='px-4 py-2 hover:text-pink-600 transition-colors cursor-pointer'>DashBorad</Link>
             <Link to="/contact" className='px-4 py-2 hover:text-pink-600 transition-colors cursor-pointer'>যোগাযোগ</Link>
           </nav>
 

@@ -25,6 +25,7 @@ import {
 import { IoMdCart } from 'react-icons/io'
 import { AiOutlinePlayCircle } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
+import CouresShare from '../SherdComponents/CouresShare'
 
 /* ===================== DATA ===================== */
 
@@ -306,10 +307,11 @@ const CourseDetails = () => {
   return (
     <section className='py-12 md:py-20 bg-[#F8FAFF]'>
       <div className='container mx-auto px-4 '>
+
         <div className='grid grid-cols-1 lg:grid-cols-12 gap-8'>
-          {/* LEFT CONTENT */}
-          <div className='lg:col-span-8 space-y-12'>
-            {/* Learn Section */}
+          
+          <div className='lg:col-span-7 space-y-12'>
+            <CouresShare />
             <div className='bg-white p-8 rounded-[32px] border border-slate-100 shadow-sm'>
               <div className='flex items-center gap-3 mb-8'>
                 <div className='h-8 w-1.5 bg-pink-500 rounded-full' />
@@ -375,7 +377,7 @@ const CourseDetails = () => {
           </div>
 
           {/* RIGHT STICKY CARD */}
-          <div className='lg:col-span-4 relative top-0 md:-top-60'>
+          <div className='lg:col-span-5 mx-auto relative top-0 md:-top-60 max-w-[400px]'>
             <div className='lg:sticky lg:top-10'>
               <div className='bg-white rounded-[32px] shadow-2xl shadow-blue-900/10 border border-slate-100 overflow-hidden'>
                 <div className='p-4'>
@@ -410,7 +412,10 @@ const CourseDetails = () => {
                     প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা স্পেশাল কোর্স
                   </h3>
 
-                  <Link to="/mycards" className='w-full  bg-[#FF1E67] hover:bg-[#D91656] text-white py-5 rounded-2xl font-black text-lg flex items-center justify-center gap-3 shadow-lg shadow-pink-200 transition-all active:scale-[0.98]'>
+                  <Link
+                    to='/mycards'
+                    className='w-full  bg-[#FF1E67] hover:bg-[#D91656] text-white py-5 rounded-2xl font-black text-lg flex items-center justify-center gap-3 shadow-lg shadow-pink-200 transition-all active:scale-[0.98]'
+                  >
                     <IoMdCart size={24} /> কোর্সটি কিনুন <MdArrowForward />
                   </Link>
 
