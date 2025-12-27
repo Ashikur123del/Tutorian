@@ -30,16 +30,13 @@ const CouresShare = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-8 bg-white font-sans text-[#1A1A1A]">
-      
-      {/* ১. কোর্সের বিবরণ */}
       <section className="mb-12">
         <h2 className="text-[32px] font-bold mb-5">এই কোর্সের বিবরণ</h2>
-        <p className="text-[#4B5563] leading-[1.6] text-lg text-justify">
-          এই কোর্সটি প্রাথমিক বিদ্যালয়ের সহকারী শিক্ষক নিয়োগ পরীক্ষার জন্য সম্পূর্ণ প্রস্তুতি নেওয়ার একটি সমন্বিত প্রশিক্ষণ কোর্স। এখানে পরীক্ষায় প্রয়োজনীয় সকল বিষয় সহজভাবে উপস্থাপন করা হয়।
+        <p className="text-[#4B5563] leading-[1.6]  text-justify font-semibold text-sm ">
+         এই কোর্সটি প্রাথমিক বিদ্যালয়ের সহকারী শিক্ষক নিয়োগ পরীক্ষার জন্য সম্পূর্ণ প্রস্তুতি নেওয়ার একটি সমন্বিত প্রশিক্ষণ কোর্স। এখানে পরীক্ষায় প্রয়োজনীয় সকল বিষয় যেমন বাংলা, গণিত, ইংরেজি, সাধারণ জ্ঞান, প্যাডাগজি (শিক্ষাদর্শন), তথ্য-প্রযুক্তি ও শিক্ষাবিষয়ক নীতিমালা সহজভাবে উপস্থাপন করা হয়
+          কোর্সটিতে থাকবে—ভিডিও লেকচার, চ্যাপ্টারভিত্তিক নোট, গুরুত্বপূর্ণ প্রশ্নব্যাংক, মডেল টেস্ট এবং পরীক্ষামুখী টিপস, যা পরীক্ষার্থীর প্রস্তুতিকে আরও শক্তিশালী ও নির্ভুল করবে।
         </p>
       </section>
-
-      {/* ২. চলমান ব্যাচের সময় */}
       <section className="mb-12">
         <h2 className="text-[32px] font-bold mb-6">চলমান ব্যাচের সময়</h2>
         <div className="inline-flex gap-3 p-3 bg-[#F8FAFC] border border-[#E5E7EB] rounded-[14px]">
@@ -51,7 +48,6 @@ const CouresShare = () => {
         </div>
       </section>
 
-      {/* ৩. কোর্স ইন্সট্রাক্টর (প্রথম ২টি ডিফল্ট ওপেন) */}
       <section className="mb-12">
         <h2 className="text-[32px] font-bold mb-6">কোর্স ইন্সট্রাক্টর</h2>
         
@@ -94,7 +90,7 @@ const CouresShare = () => {
         </div>
       </section>
 
-      {/* ৪. নিচের বাটনগুলো */}
+
       <div className="inline-flex flex-wrap gap-3 p-3 bg-[#F8FAFC] border border-[#E5E7EB] rounded-[14px]">
         {['কোর্সের সূচিপত্র', 'কোর্সের বিষয়বস্তু', 'কোর্স উপকরণ', 'এক্সাম'].map((label) => (
           <button key={label} className="bg-white border border-[#E5E7EB] rounded-lg px-5 py-2.5 text-[15px] font-bold text-[#374151] hover:bg-gray-50 transition-all shadow-sm">

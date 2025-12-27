@@ -78,18 +78,18 @@ const PaymentPage = () => {
 
           {/* Right Side: Payment Selection */}
           <div className='flex flex-col items-center'>
-            <h2 className='text-xl font-semibold mb-6 text-gray-800 self-center'>
+            <h2 className='text-[24px] font-semibold mb-6 text-gray-800 self-center'>
               পেমেন্ট মেথড সিলেক্ট করুন
             </h2>
 
-            <div className='w-full max-w-[400px] bg-white rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.04)] border border-gray-100 p-6 space-y-3'>
+            <div className='w-full max-w-[400px] bg-white border-2 border-gray-200 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.04)] p-6 space-y-3'>
               {paymentMethods.map(method => (
                 <div
                   key={method.id}
                   onClick={() => setSelectedMethod(method.id)}
-                  className={`flex items-center justify-between p-3 border rounded-xl cursor-pointer transition-all ${
+                  className={`flex items-center justify-between p-3 border border-gray-200 rounded-xl shadow cursor-pointer transition-all ${
                     selectedMethod === method.id
-                      ? 'border-[#E91E63] ring-1 ring-[#E91E63]'
+                      ? 'border-gray-200 ring-1 ring-gray-200'
                       : 'border-gray-200 hover:border-gray-300'
                   }`}
                 >
@@ -101,7 +101,7 @@ const PaymentPage = () => {
                     </div>
                     <span className='text-sm font-semibold text-gray-700'>{method.name}</span>
                   </div>
-                  <div className='border rounded p-1 h-8 w-20 flex items-center justify-center'>
+                  <div className='border border-gray-200 rounded p-1 h-8 w-20 flex items-center justify-center'>
                     <img src={method.img} alt={method.name} className='max-h-full object-contain' />
                   </div>
                 </div>

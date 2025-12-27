@@ -307,9 +307,7 @@ const CourseDetails = () => {
   return (
     <section className='py-12 md:py-20 bg-[#F8FAFF]'>
       <div className='container mx-auto px-4 '>
-
         <div className='grid grid-cols-1 lg:grid-cols-12 gap-8'>
-          
           <div className='lg:col-span-7 space-y-12'>
             <CouresShare />
             <div className='bg-white p-8 rounded-[32px] border border-slate-100 shadow-sm'>
@@ -376,50 +374,63 @@ const CourseDetails = () => {
             </div>
           </div>
 
-          {/* RIGHT STICKY CARD */}
-          <div className='lg:col-span-5 mx-auto relative top-0 md:-top-60 max-w-[400px]'>
+          <div className='lg:col-span-5 mx-auto relative top-0 md:-top-60 max-w-[420px] w-full'>
             <div className='lg:sticky lg:top-10'>
-              <div className='bg-white rounded-[32px] shadow-2xl shadow-blue-900/10 border border-slate-100 overflow-hidden'>
-                <div className='p-4'>
-                  <div className='relative aspect-video rounded-2xl overflow-hidden group cursor-pointer'>
+              <div className='bg-white rounded-[18px] shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-slate-100 overflow-hidden'>
+                <div className='p-4 pb-0'>
+                  <div className='relative aspect-[16/10] w-full rounded-[18px] overflow-hidden group cursor-pointer bg-slate-100'>
                     <img
                       src={Cardr}
                       alt='course'
-                      className='w-full h-full object-cover group-hover:scale-105 transition-all duration-700'
+                      className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-500'
                     />
-                    <div className='absolute inset-0 bg-black/20 flex items-center justify-center'>
-                      <div className='bg-white p-4 rounded-full text-pink-600 shadow-2xl transform group-hover:scale-110 transition-transform'>
-                        <AiOutlinePlayCircle size={32} />
+
+                    {/* Overlay */}
+                    <div className='absolute inset-0 bg-black/20 flex items-center justify-center group-hover:bg-black/40 transition-all'>
+                      <div className='relative flex items-center justify-center'>
+                        <span className='absolute w-16 h-16 rounded-full bg-white/30 animate-ping'></span>
+                        <div className='w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-xl'>
+                          <AiOutlinePlayCircle
+                            size={32}
+                            className='text-[#FF1E67]'
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-
-                <div className='px-8 pb-8 space-y-6'>
-                  <div className='flex gap-3 items-baseline'>
-                    <span className='text-4xl font-black text-slate-800'>
+                <div className='p-6 md:p-8 space-y-6'>
+                  <div className='space-y-1'>
+                    <div className='flex items-center gap-2'>
+                      <span className='bg-pink-100 text-pink-600 px-2 py-0.5 rounded-md text-[12px] font-bold'>
+                        ৩০% ছাড়
+                      </span>
+                      <span className='line-through text-slate-400 text-sm'>
+                        ৳৩৫০০
+                      </span>
+                    </div>
+                    <div className='text-4xl font-black text-slate-800'>
                       ৳২৫৫০
-                    </span>
-                    <span className='line-through text-slate-400 text-lg font-medium'>
-                      ৳৩৫০০
-                    </span>
-                    <span className='bg-pink-100 text-pink-600 px-3 py-1 rounded-lg text-xs font-black'>
-                      ৩০% ছাড়
-                    </span>
+                    </div>
                   </div>
 
-                  <h3 className='font-bold text-xl text-slate-700 leading-snug'>
+                  {/* TITLE */}
+                  <h3 className='font-bold text-xl text-slate-700 leading-tight min-h-[56px]'>
                     প্রাথমিক সহকারী শিক্ষক নিয়োগ পরীক্ষা স্পেশাল কোর্স
                   </h3>
 
+                  {/* BUY BUTTON */}
                   <Link
                     to='/mycards'
-                    className='w-full  bg-[#FF1E67] hover:bg-[#D91656] text-white py-5 rounded-2xl font-black text-lg flex items-center justify-center gap-3 shadow-lg shadow-pink-200 transition-all active:scale-[0.98]'
+                    className='w-full bg-[#FF1E67] hover:bg-[#D91656] text-white py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 shadow-lg shadow-pink-200 transition-all active:scale-[0.98]'
                   >
-                    <IoMdCart size={24} /> কোর্সটি কিনুন <MdArrowForward />
+                    <IoMdCart size={22} />
+                    কোর্সটি কিনুন
+                    <MdArrowForward />
                   </Link>
 
-                  <div className='space-y-4 pt-2'>
+                  {/* FEATURES - Optimized Spacing */}
+                  <div className='grid grid-cols-1 gap-3.5 pt-2'>
                     {[
                       {
                         icon: <HiOutlineUsers />,
@@ -444,19 +455,16 @@ const CourseDetails = () => {
                     ].map((feat, i) => (
                       <div
                         key={i}
-                        className='flex gap-3 items-center text-slate-600 font-semibold text-[15px]'
+                        className='flex gap-3 items-center text-slate-600 font-medium text-sm'
                       >
-                        <span className={`${feat.color} text-xl`}>
+                        <span
+                          className={`${feat.color} text-xl bg-slate-50 p-1.5 rounded-lg`}
+                        >
                           {feat.icon}
-                        </span>{' '}
+                        </span>
                         {feat.text}
                       </div>
                     ))}
-                  </div>
-
-                  <div className='pt-6 border-t border-dashed flex justify-center items-center gap-2 text-slate-400 font-bold text-xs uppercase tracking-wider'>
-                    <HiSparkles className='text-yellow-400' /> Lifetime Access
-                    Included
                   </div>
                 </div>
               </div>
