@@ -107,7 +107,7 @@ export default function CourseSelection() {
       <div className='container mx-auto'>
         {/* Header & Tabs */}
         <div className='flex flex-col xl:flex-row xl:items-center justify-between gap-2 mb-12'>
-          <h1 className='text-3xl md:text-4xl font-black text-[#1a1a1a] tracking-tight text-center md:text-left'>
+          <h1 className='text-2xl md:text-4xl font-black text-[#1a1a1a] tracking-tight text-center md:text-left mb-6'>
             আমাদের লাইভ কোর্স সমূহ
           </h1>
 

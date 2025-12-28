@@ -16,9 +16,9 @@ const Navbar = () => {
       icon: <FaBook className="text-pink-500" />,
       href: '/coure',
       links: [
-        { name: 'ওয়েব ডিজাইন', href: '/course#web', icon: <FaLaptopCode /> },
-        { name: 'গ্রাফিক্স ডিজাইন', href: '/course#graphics', icon: <FaPenNib /> },
-        { name: 'ডিজিটাল মার্কেটিং', href: '/course#digital', icon: <FaBullhorn /> }
+        { name: 'ওয়েব ডিজাইন', href: '/coure', icon: <FaLaptopCode /> },
+        { name: 'গ্রাফিক্স ডিজাইন', href: '/coure', icon: <FaPenNib /> },
+        { name: 'ডিজিটাল মার্কেটিং', href: '/coure', icon: <FaBullhorn /> }
       ]
     },
     free: {
@@ -111,7 +111,7 @@ const Navbar = () => {
             <Link to="/exam" className='px-4 py-2 hover:text-pink-600 transition-colors cursor-pointer'>পরীক্ষা</Link>
             <Link to="/addtocards" className='px-4 py-2 hover:text-pink-600 transition-colors cursor-pointer'>সকল বই</Link>
             <Link to="/blog" className='px-4 py-2 hover:text-pink-600 transition-colors cursor-pointer'>ব্লগ</Link>
-            <Link to="/dashborad" className='px-4 py-2 hover:text-pink-600 transition-colors cursor-pointer'>DashBorad</Link>
+            <Link to="/dashboard" className='px-4 py-2 hover:text-pink-600 transition-colors cursor-pointer'>DashBorad</Link>
             <Link to="/contact" className='px-4 py-2 hover:text-pink-600 transition-colors cursor-pointer'>যোগাযোগ</Link>
           </nav>
 

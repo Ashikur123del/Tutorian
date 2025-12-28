@@ -87,8 +87,13 @@ const BookCard = ({ item }) => (
           <HiOutlineShoppingBag size={16} />
         </Icon>
       </div>
-      <div className="">
-        <Link to="/educationprat" className='mt-6 inline-block items-center gap-3 bg-gradient-to-r from-[#FF7844] to-[#FC1C69] text-white px-5 md:px-9 py-2 rounded-lg font-bold text-sm md:text-lg shadow-xl'>Book Details</Link>
+      <div className=''>
+        <Link
+          to='/educationprat'
+          className='mt-6 inline-block items-center gap-3 bg-gradient-to-r from-[#FF7844] to-[#FC1C69] text-white px-5 md:px-9 py-2 rounded-lg font-bold text-sm md:text-lg shadow-xl'
+        >
+          Book Details
+        </Link>
       </div>
     </div>
   </motion.div>
@@ -121,12 +126,11 @@ const ExamBooks = () => {
             <h3 className='text-2xl md:text-3xl font-black leading-tight mb-8 text-[#1A1A1A]'>
               যে বইগুলো আপনার <br /> ক্যারিয়ারের জন্য
             </h3>
-            <button className='bg-[#FF2E63] text-white px-6 py-3 rounded-xl w-fit flex items-center gap-2 font-bold hover:shadow-lg transition-all active:scale-95'>
+            <Link to="/addtocards" className='bg-[#FF2E63] text-white px-6 py-3 rounded-xl w-fit flex items-center gap-2 font-bold hover:shadow-lg transition-all active:scale-95'>
               <span className='text-lg'>📚</span> সব বইগুলো দেখুন
-            </button>
+            </Link>
           </div>
         </motion.div>
-
 
         <div className='w-full'>
           <div className='block lg:hidden'>
