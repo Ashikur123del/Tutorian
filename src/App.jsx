@@ -12,6 +12,8 @@ import PaymentSucces from './Components/PaymentComonet/PaymentSucces';
 import Dashboard from './Components/Dashboard/Dashboard';
 import MyCoures from './Pages/MyCoures/MyCoures';
 import DashboardLayout from './Layout/DashboardLayout/DashboardLayout';
+import Exams from './Pages/MyCoures/Exams';
+import ExamDetails from './Pages/MyCoures/ExamDetails';
 
 
 function App() {
@@ -31,14 +33,12 @@ function App() {
       </Route>
 
     {/* ২. ড্যাশবোর্ড লেআউট */}
-      <Route path='/dashboard' element={<DashboardLayout />}>
-        <Route index element={<Dashboard />} /> 
-        
-        {/* এই রাউটটি এখন কাজ করবে /dashboard/mycoures এ গেলে */}
+     <Route path='/dashboard' element={<DashboardLayout />}>
+        <Route index element={<Dashboard />} />
         <Route path='mycoures' element={<MyCoures />} />
-        
-        {/* যখন নির্দিষ্ট কোর্সে ক্লিক করবেন তখন এটি কাজ করবে */}
-        <Route path='mycoures/:courseSlug' element={<MyCoures />} /> 
+        <Route path='mycoures/:courseSlug' element={<MyCoures />} />
+        <Route path='exams' element={<Exams />} />
+        <Route path='examsdetails/:slug' element={<ExamDetails />} />
       </Route>
     </Routes>
   );
